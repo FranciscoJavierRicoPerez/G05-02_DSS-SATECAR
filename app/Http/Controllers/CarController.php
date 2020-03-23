@@ -28,6 +28,10 @@ class CarController extends Controller {
     public function getCar($id){
         $car = Car::find($id);
         $brand = Brand::getBrandByID($car->brand_id);
+        $accidentes = Car::getAllIncidentsByCar($id);
+        foreach($accidentes as $accidente){
+            echo $accidente->incident_id;
+        }
         return view('car')->with('car', $car)->with('brand', $brand);
     }
     public function deleteCar($id){
