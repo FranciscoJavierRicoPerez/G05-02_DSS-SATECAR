@@ -1,5 +1,6 @@
 @extends('barradenavegacion')
 @section('content')
+<div class="container">
 <a href="/coches" type="button" class="btn btn-primary btn-lg btn-block">Coches</a> 
 <table class="table table-striped table-dark">
   <thead>
@@ -59,5 +60,33 @@
       </div>
     </div>
   </div>
+</div>
+</div>
+
+@if($accidentes != '[]')
+    <h3>Accidentes sufridos</h3>
+        <div>
+            <div id="tablaDeAccidentes"> 
+                <table class="table text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Fecha de accidente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($accidentes as $accidente)
+                      @foreach($datos_accidente as $dato_accidente)
+                        <tr>
+                          <td scope="row">{{$dato_accidente->type}}</td>
+                          <td>{{$accidente->date}}</td>
+                        </tr>
+                      @endforeach
+                    @endforeach
+                </tbody>
+                </table>
+        </div>
+</div>
+@endif
 </div>
 @endsection

@@ -13,4 +13,9 @@ class Incident extends Model
     protected $fillable = [
         'type','description', 'price' , 'grade'
     ];
+
+    public static function getAccidentbyCarID($id){
+        $accidente = Incident::where('id', '=', $id)->first();
+        return $accidente;
+    }
 }
